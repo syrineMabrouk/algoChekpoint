@@ -1,0 +1,20 @@
+  
+ALGORITHM algorithm_name
+VAR
+    t1 : ARRAY_OF INTEGER [100]; 
+    t2 : ARRAY_OF INTEGER [100]; 
+    i,j, sum : INTEGER:=0;
+BEGIN 
+    write ("saisir t1") ;
+    read(t1) ;
+    write("saisir t2") ; 
+    read (t2) ; 
+    FOR i FROM 0 TO t1.length-1 DO
+            FOR j FROM 0 TO t2.length-1 DO 
+                IF (t1[i] = t2[j] )) THEN
+                    sum := sum + t1[i] *t2[j] ;
+                END_IF
+            END_FOR
+ END_FOR
+    write (sum);
+END

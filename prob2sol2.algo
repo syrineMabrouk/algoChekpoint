@@ -1,0 +1,22 @@
+ALGORITHM algorithm_name
+VAR
+ htable1:HASH_TABLE<INTEGER,INTEGER>;
+ htable2:HASH_TABLE<INTEGER,INTEGER>;
+ sum:INTEGER:=0;
+ k,l,i,j:INTEGER:=0;
+BEGIN
+write("Htable 1");
+read(htable1);
+write("Htable 2");
+read(htable2);
+ WHILE (htable1.lookup = TRUE) DO
+     WHILE (htable2.lookup = TRUE) DO
+        IF (htable1.get(i)=htable2.get(j)) THEN 
+       sum=sum+htable1.get(i)+htable1.get(j)
+        END_IF
+         j=j+1;
+      END_WHILE
+       i:=i+1;
+   END_WHILE
+   write (sum);
+END

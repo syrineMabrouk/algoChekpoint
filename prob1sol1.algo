@@ -1,0 +1,42 @@
+ALGORITHM algorithm_name
+VAR
+     t: ARRAY_OF INTEGER[n];
+     n:INTEGER;
+     t1: ARRAY_OF INTEGER[n1];
+     n1:INTEGER;
+     k,lj,i:INTEGER;
+     sum:INTEGER:=0;
+     test2,test:BOOLEAN:=FALSE;
+BEGIN
+     write ("saisir prémier table") ;
+    read (t) ;
+    write("saisir 2éme table ") ; 
+    read (t1) ;
+    FOR i FROM 0 TO t.length-1 STEP 1  DO
+        
+        FOR j FROM 0 TO max t1.length  step  1 DO
+            IF (t[i] <> t1[j]) THEN
+          test:=TRUE;
+         
+          ELSE
+             test:=FALSE;
+          END_IF
+        END_FOR
+       IF (test=TRUE) THEN
+          sum := sum+t[i];
+       END_IF  
+    END_FOR
+       FOR k FROM 0 TO t1.length-1 STEP 1  DO    
+        FOR l FROM 0 TO max t.length  step  1 DO
+            IF (t1[k] <> t[l]) THEN
+              test2:=TRUE;
+           ELSE
+             test2:=FALSE;
+            END_IF
+        END_FOR
+             IF (tes2=TRUE) THEN
+          sum := sum+t1[k];
+       END_IF
+    END_FOR
+write (sum);
+END

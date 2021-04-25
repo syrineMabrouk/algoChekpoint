@@ -1,38 +1,41 @@
 ALGORITHM algorithm_name
 VAR
- htable1:HASH_TABLE<INTEGER,INTEGER>;
- htable2:HASH_TABLE<INTEGER,INTEGER>;
- sum:INTEGER:=0;
- k,l,i,j:INTEGER:=0;
- test:BOOLEAN:=FALSE;
+    htab : HASH_TABLE <INTEGER,INTEGER>;
+    set1,set2: ARRAY_OF INTEGER [100];
+    i,sum,count : INTEGER;
+    sum:=0 ; 
+    count :=0 ;
 BEGIN
-   WHILE (htable1.lookup = TRUE) DO
-     WHILE (htable2.lookup = TRUE) DO
-        IF (htable1.get(i)<>htable2.get(j)) THEN 
-        test:=true;
-        ELSE 
-        test:=false;
+    FOR i FROM 0 TO set1.length-1 STEP 1 DO
+        IF (htab.lookup(set1[i])= TRUE) THEN
+            count:= htab.get(set1[i]);
+            htab.insert(set1[i],count+1);
+        ELSE
+            htab.insert(set1[i],1);
         END_IF
-         j=j+1;
-      END_WHILE
-        IF (test=TRUE) THEN
-        sum=sum+htable1.get(i);
-         END_IF
-       i:=i+1;
-   END_WHILE
-   WHILE (htable1.lookup = TRUE) DO
-     WHILE (htable2.lookup = TRUE) DO
-        IF (htable1.get(l)<>htable2.get(k)) THEN 
-        test:=true;
-        ELSE 
-        test:=false;
+    END_FOR
+
+
+    FOR i FROM 0 TO set2.length-1 STEP 1 DO
+        IF (htab.lookup(set2[i])= TRUE) THEN
+            count:= htab.get(set2[i]);
+            htab.insert(set2[i],count+1);
+        ELSE
+            htab.insert(set2[i],1);
         END_IF
-         k=k+1;
-      END_WHILE
-        IF (test=TRUE) THEN
-        sum=sum+htable1.get(l);
-         END_IF
-       l:=l+1;
-   END_WHILE
-   write(sum);
+    END_FOR
+
+    FOR i FROM 0 TO set1.length-1 STEP 1 DO
+        IF ( htab.get(set1[i]) = 1) THEN
+            sum := sum + set1[i];
+        END_IF 
+    END_FOR
+
+    FOR i FROM 0 TO set2.length-1 STEP 1 DO
+        IF ( htab.get(set2[i]) = 1) THEN
+            sum := sum +set2[i];
+        END_IF 
+    END_FOR
+    
+    Write(sum);
 END

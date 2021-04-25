@@ -1,6 +1,6 @@
 ALGORITHM algorithm_name
 VAR
-    sentence:STRING; 
+   sentence:STRING; 
    v,i:INTEGER:=0;
     mot:INTEGER:=1;
 BEGIN
